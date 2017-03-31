@@ -68,7 +68,10 @@ if __name__ == '__main__':
             if filename.endswith('.xml'):
                 fname = os.path.join(scriptpath, 'xml_files', fdir, filename)
                 print('FILE: {}'.format(fname))
-                content = parseXML(fname)
                 output_fname = os.path.join(scriptpath, 'xml_files', fdir, (os.path.basename(fname)).split('-')[2]) 
                 output_fname = changeExt(output_fname, 'csv')
-                writeResults(content, output_fname)
+                if (os.path.isfile(output_fname)):
+                    print('FILE: {} already exists!'.format(output_fname))
+                else:
+                    content = parseXML(fname)
+                    writeResults(content, output_fname)
