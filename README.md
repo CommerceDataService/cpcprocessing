@@ -1,4 +1,4 @@
-#cpcprocessing
+# cpcprocessing
 
 This repository contains a simple script (`processpcpfiles.py`) that will process cpc definition XML files.  These files can be obtained from:
 http://www.cooperativepatentclassification.org/cpcSchemeAndDefinitions/Bulk.html
