@@ -63,15 +63,16 @@ def changeExt(fname, ext):
 if __name__ == '__main__':
     scriptpath = os.path.dirname(os.path.abspath(__file__))
     for fdir in os.listdir(os.path.join(scriptpath, 'xml_files')):
-        print(fdir)
-        for filename in os.listdir(os.path.join(scriptpath, 'xml_files', fdir)):
-            if filename.endswith('.xml'):
-                fname = os.path.join(scriptpath, 'xml_files', fdir, filename)
-                print('FILE: {}'.format(fname))
-                output_fname = os.path.join(scriptpath, 'xml_files', fdir, (os.path.basename(fname)).split('-')[2]) 
-                output_fname = changeExt(output_fname, 'csv')
-                if (os.path.isfile(output_fname)):
-                    print('FILE: {} already exists!'.format(output_fname))
-                else:
-                    content = parseXML(fname)
-                    writeResults(content, output_fname)
+        if os.path.isdir(os.path.join(scriptpath, 'xml_files', fdir)):
+            print(fdir)
+            for filename in os.listdir(os.path.join(scriptpath, 'xml_files', fdir)):
+                if filename.endswith('.xml'):
+                    fname = os.path.join(scriptpath, 'xml_files', fdir, filename)
+                    print('FILE: {}'.format(fname))
+                    output_fname = os.path.join(scriptpath, 'xml_files', fdir, (os.path.basename(fname)).split('-')[2]) 
+                    output_fname = changeExt(output_fname, 'csv')
+                    if (os.path.isfile(output_fname)):
+                        print('FILE: {} already exists!'.format(output_fname))
+                    else:
+                        content = parseXML(fname)
+                        writeResults(content, output_fname)
